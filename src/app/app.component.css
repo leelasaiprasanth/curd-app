@@ -3,10 +3,10 @@ table {
 }
 
 .mat-mdc-form-field {
-  font-size: 14px;
-  width: 100%;
+  padding: 20px 20px ;
 }
 
-td, th {
+td,
+th {
   width: 25%;
 }
