@@ -1,21 +1,31 @@
-<mat-form-field>
-    <input matInput placeholder="Search" (keyup)="applyFilter($any($event.target).value)">
-  </mat-form-field>
-  
-  <table mat-table [dataSource]="dataSource" matSort>
-  
-    <ng-container matColumnDef="{{ column }}" *ngFor="let column of displayedColumns">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>
-        {{column}} 
-      </th>
-      <td mat-cell *matCellDef="let row">
-        {{row[column]}}
-      </td>
-    </ng-container>
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  
-  </table>
-  
-  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+<mat-slide-toggle>Slide me!</mat-slide-toggle>
+<!-- User Information: {{ userInfo | json }} -->
+
+<!-- Working code  -->
+<table id="userInfo">
+  <tr>
+    <th>Name</th>
+    <th>Gender</th>
+    <th>Email</th>
+    <th>Department</th>
+    <th>Company</th>
+    <th>Date of Joining</th>
+  </tr>
+  <tr *ngFor="let userInfo of userInfo">
+    <td>{{ userInfo.name }}</td>
+    <td>{{ userInfo.gender }}</td>
+    <td>{{ userInfo.email }}</td>
+    <td>{{ userInfo.department }}</td>
+    <td>{{ userInfo.company }}</td>
+    <td>{{ userInfo.date }}</td>
+  </tr>
+</table>
+
+<!-- {
+  "name": "Solomon Fernley",
+  "gender": "Male",
+  "email": "sfernley0@bbc.co.uk",
+  "department": "Marketing",
+  "company": "Wordware",
+  "date": "29-Sep-2023"
+}, -->
