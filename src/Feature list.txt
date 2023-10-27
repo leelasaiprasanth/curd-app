@@ -1,0 +1,14 @@
+ implementing a table with filter on headers using mat-table
+ Use some sample data to show there
+ Or a json file
+ And keep a date field in data
+ Also you can implement a drop-down from which we can select a certain period like 2 months or 3 months.. or something like Mar- APR 
+To see that data only in table
+Try keeping atleast 6 months of data in table with few 1-2 record of each
+Try using material UI For this
+Like Mar 2023 to till Aug -2023
+We can select any values from those drop-downs and see from current year
+
+
+Now try implementing some graphs like bar charts or histogram on the same page with the very same data is being controlled by those date drop-downs...
+And try to give a download option in top right corner to download the whole page (tabel and charts) as ppt

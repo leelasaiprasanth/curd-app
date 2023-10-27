@@ -1,8 +1,11 @@
 p {
-    font-family: Lato;
-  }
-  
-  td {
-    text-align: center;
-  }
-  
+  font-family: Lato;
+}
+
+td {
+  text-align: center;
+}
+
+table {
+  width: 100%;
+}
