@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { EmployeeData } from './models/employee-data';
+import { DataSourceService } from './service/data-source.service';
 
 @Component({
   selector: 'app-root',
@@ -11,19 +12,30 @@ import { EmployeeData } from './models/employee-data';
 })
 export class AppComponent implements OnInit {
   title = 'Curd App';
+
   public EmployeeData: any;
-  userData = new MatTableDataSource<EmployeeData>();
+  public dataSource: any;
+
   public constructor(private http: HttpClient) {}
-  public ngOnInit(): void {
+
+  public ngOnInit() {
+    this.fetchData();
+  }
+
+  fetchData(): void {
     const url: string = '/assets/EmployeeData.json';
     this.http.get(url).subscribe((response) => {
-      console.log('Raw Data received', response);
       this.EmployeeData = response;
-      this.userData.data = this.EmployeeData;
-      this.userData.paginator = this.paginator;
+
+      console.log('Raw Data received', this.EmployeeData);
+
+      this.dataSource = new MatTableDataSource(this.EmployeeData);
+      this.dataSource.paginator = this.paginator;
+
+      console.log('Data source', this.dataSource.data);
     });
-    console.log('Data source', this.userData.data);
   }
+
   public ngOnDestroy() {}
 
   displayedColumns: string[] = [
