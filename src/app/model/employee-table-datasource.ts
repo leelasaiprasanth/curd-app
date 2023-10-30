@@ -8,8 +8,8 @@ export class EmployeeDataSource extends DataSource<Employee> {
     super();
   }
 
-  connect(): Observable<Employee[]>  {
-    return of(this.employeeData); 
+  connect(): Observable<Employee[]> {
+    return of(this.employeeData);
   }
 
   disconnect() {}
