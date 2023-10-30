@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
 
@@ -6,17 +6,19 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatTableModule } from '@angular/material/table';
 import { EmployeeService } from './service/employee.service';
 import { EmployeeDataSource } from './model/employee-table-datasource';
+import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { Employee } from './model/employee.interface';
-import { MatSort } from '@angular/material/sort';
-// import { MatTableFilter } from 'mat-table-filter';
+
+import { MatFormField } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   title = 'Curd-Application';
 
   dataSource!: MatTableDataSource<Employee>;
@@ -36,20 +38,27 @@ export class AppComponent {
   ngOnInit() {
     this.employeeService.getEmployees().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
       // this.dataSource.filter = this.filter;
     });
   }
 
-  @ViewChild('paginator')
-  paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild('paginator') paginator!: MatPaginator;
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+    // this.dataSource.sort = this.sort;
+    // this.dataSource.paginator = this.paginator;
     // this.dataSource = new MatTableDataSource(this.data);
   }
 
-  @ViewChild(MatSort) sort!: MatSort;
-  // @ViewChild(MatTableFilter) filter!: MatTableFilter;
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
 }

@@ -1,16 +1,21 @@
 <!-- User Information: {{dataSource | json }} -->
-
-<mat-toolbar>
-  <span>{{ title }}</span>
-  <span class="spacer"></span>
-  <button
-    mat-icon-button
-    class="example-icon"
-    aria-label="Example icon-button with share icon"
-  >
-    <mat-icon>share</mat-icon>
-  </button>
-</mat-toolbar>
+<div class="Header">
+  <mat-toolbar>
+    <span>{{ title }}</span>
+    <span class="spacer"></span>
+    <mat-form-field appearance="outline" style="margin-bottom: -1.28em">
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Typing" />
+    </mat-form-field>
+    <button
+      mat-icon-button
+      class="example-icon"
+      aria-label="Example icon-button with share icon"
+    >
+      <mat-icon>share</mat-icon>
+    </button>
+  </mat-toolbar>
+</div>
 
 <table mat-table [dataSource]="dataSource" matSort>
   <ng-container
