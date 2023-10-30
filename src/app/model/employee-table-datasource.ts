@@ -3,6 +3,7 @@ import { Employee } from './employee.interface';
 import { Observable, of } from 'rxjs';
 
 export class EmployeeDataSource extends DataSource<Employee> {
+  paginator: any;
   constructor(private employeeData: Employee[]) {
     super();
   }
