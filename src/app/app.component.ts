@@ -9,6 +9,7 @@ import { EmployeeService } from './service/employee.service';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { Employee } from './model/employee.interface';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 
 // import { MatFormField } from '@angular/material/form-field';
 // import { MatInput } from '@angular/material/input';
@@ -22,6 +23,8 @@ export class AppComponent implements AfterViewInit {
   title = 'Curd-Application';
 
   dataSource!: MatTableDataSource<Employee>;
+  selectedStartDate: Date | null = null;
+  selectedEndDate: Date | null = null;
 
   columnsToDisplay = [
     'name',
@@ -59,6 +62,66 @@ export class AppComponent implements AfterViewInit {
 
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
+    }
+  }
+
+  applyDateRangeFilter() {
+    if (this.selectedStartDate && this.selectedEndDate) {
+      const filteredData = this.data.filter((employee) => {
+        const date = this.formatDate(employee.date);
+        return date >= this.selectedStartDate! && date <= this.selectedEndDate!;
+      });
+
+      this.dataSource.data = filteredData;
+    } else {
+      // If no date range is selected, show all data
+      this.dataSource.data = this.data;
+    }
+
+    // Reapply sorting and pagination
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+  }
+
+  formatDate(dateString: string): Date {
+    const parts = dateString.split('-');
+    if (parts.length === 3) {
+      const day = +parts[0];
+      const month = this.getMonthNumber(parts[1]);
+      const year = +parts[2];
+      return new Date(year, month - 1, day);
+    }
+    return new Date(); // Return a default date in case of invalid format
+  }
+
+  getMonthNumber(monthName: string): number {
+    const months = [
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec',
+    ];
+    return months.indexOf(monthName) + 1;
+  }
+
+  // Handler for date range picker selection
+  dateRangeSelected(
+    type: 'start' | 'end',
+    event: MatDatepickerInputEvent<Date>
+  ) {
+    const value = event.value;
+    if (type === 'start') {
+      this.selectedStartDate = value;
+    } else if (type === 'end') {
+      this.selectedEndDate = value;
     }
   }
 }

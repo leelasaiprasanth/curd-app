@@ -3,10 +3,38 @@
   <mat-toolbar>
     <span>{{ title }}</span>
     <span class="spacer"></span>
+    <mat-form-field
+      appearance="outline"
+      style="margin-bottom: -1.28em; width: 25%; padding-right: 5px"
+    >
+      <mat-label>Enter a date range</mat-label>
+      <mat-date-range-input [rangePicker]="picker">
+        <input
+          matStartDate
+          placeholder="Start date"
+          [matDatepicker]="startDatePicker"
+          (dateChange)="dateRangeSelected('start', $event)"
+        />
+        <input
+          matEndDate
+          placeholder="End date"
+          [matDatepicker]="endDatePicker"
+          (dateChange)="dateRangeSelected('end', $event)"
+        />
+      </mat-date-range-input>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+      <mat-datepicker #startDatePicker></mat-datepicker>
+      <mat-datepicker #endDatePicker></mat-datepicker>
+    </mat-form-field>
     <mat-form-field appearance="outline" style="margin-bottom: -1.28em">
       <mat-label>Filter</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Typing" />
+      <input matInput (keyup)="applyFilter($event)" placeholder="Typing." />
     </mat-form-field>
+
     <button
       mat-icon-button
       class="example-icon"

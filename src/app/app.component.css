@@ -1,3 +1,7 @@
+::ng-deep .mat-header-cell {
+  font-weight: bold !important;
+}
+
 .Header {
   padding: 5px;
 }

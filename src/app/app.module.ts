@@ -13,6 +13,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 // import { MatTableFilterModule } from 'mat-table-filter';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,6 +30,8 @@ import { MatInputModule } from '@angular/material/input';
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
     // MatTableFilterModule
   ],
   providers: [],
