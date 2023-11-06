@@ -1,0 +1,6 @@
+/* chart-popup.component.css */
+
+.dialog-content {
+  max-height: 90vh; /* Adjust the percentage to your preference */
+  overflow-y: auto;
+}

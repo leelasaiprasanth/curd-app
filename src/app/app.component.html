@@ -35,16 +35,20 @@
       <input matInput (keyup)="applyFilter($event)" placeholder="Typing." />
     </mat-form-field>
 
-    <button
+    <button mat-icon-button (click)="openChartDialog()">
+      <mat-icon>bar_chart</mat-icon>
+    </button>
+    <button mat-raised-button color="primary" (click)="generatePDF()">
+      PDF
+    </button>
+
+    <!-- <button
       mat-icon-button
       class="example-icon"
       aria-label="Example icon-button with share icon"
     >
       <mat-icon>share</mat-icon>
-    </button>
-    <button mat-raised-button color="primary" (click)="generatePDF()">
-      PDF
-    </button>
+    </button> -->
   </mat-toolbar>
 </div>
 <div id="tableToExport">

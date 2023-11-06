@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
+import { ChartPopupComponent } from './chart-popup/chart-popup.component';
 import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSortModule } from '@angular/material/sort';
@@ -16,9 +17,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
+import { NgxApexchartsModule } from 'ngx-apexcharts';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ChartPopupComponent],
   imports: [
     BrowserModule,
     MatTableModule,
@@ -34,6 +37,8 @@ import { FormsModule } from '@angular/forms';
     MatNativeDateModule,
     MatDatepickerModule,
     FormsModule,
+    MatDialogModule,
+    NgxApexchartsModule,
     // MatTableFilterModule
   ],
   providers: [],
