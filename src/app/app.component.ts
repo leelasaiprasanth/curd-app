@@ -14,6 +14,9 @@ import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 // import { MatFormField } from '@angular/material/form-field';
 // import { MatInput } from '@angular/material/input';
 
+import { jsPDF } from 'jspdf';
+import html2canvas from 'html2canvas';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -122,6 +125,24 @@ export class AppComponent implements AfterViewInit {
       this.selectedStartDate = value;
     } else if (type === 'end') {
       this.selectedEndDate = value;
+    }
+  }
+
+  generatePDF() {
+    const doc = new jsPDF();
+
+    // Capture the MatTable HTML content using html2canvas
+    const element = document.getElementById('tableToExport');
+
+    if (element) {
+      // Check if the element exists
+      html2canvas(element).then((canvas) => {
+        const imgData = canvas.toDataURL('image/png');
+
+        // Add the captured HTML content as an image to the PDF
+        doc.addImage(imgData, 'PNG', 10, 10, 190, 0);
+        doc.save('table.pdf');
+      });
     }
   }
 }

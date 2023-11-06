@@ -15,6 +15,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,6 +33,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatInputModule,
     MatNativeDateModule,
     MatDatepickerModule,
+    FormsModule,
     // MatTableFilterModule
   ],
   providers: [],
