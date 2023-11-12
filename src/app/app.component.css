@@ -1,0 +1,28 @@
+::ng-deep .mat-header-cell {
+  font-weight: bold !important;
+}
+
+.Header {
+  padding: 5px;
+}
+
+table {
+  width: 100%;
+}
+
+span {
+  padding: 20px;
+}
+
+.mat-mdc-form-field {
+  /* padding-bottom: 0px; */
+  font-size: 12px;
+  width: 100%;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.mat-elevation-z8 {
+  text-align: center;
+}
