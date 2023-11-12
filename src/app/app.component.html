@@ -1,30 +1,53 @@
 <mat-toolbar>
-  <button
-    mat-icon-button
-    class="example-icon"
-    aria-label="Example icon-button with menu icon"
-  >
-    <mat-icon>menu</mat-icon>
-  </button>
   <span>{{ title }}</span>
-  <mat-form-field appearance="outline" style="margin-bottom: -1.8em">
-    <mat-label>Filter</mat-label>
-    <input
-      matInput
-      (keyup)="applyFilter($event)"
-      placeholder="Ex. Mia"
-      #input
-    />
-  </mat-form-field>
   <span class="example-spacer"></span>
   <button
     mat-icon-button
     class="example-icon"
     aria-label="Example icon-button with share icon"
   >
-    <mat-icon>share</mat-icon>
+    <mat-icon>home</mat-icon>
   </button>
 </mat-toolbar>
+
+<div class="selectwrapper">
+  <mat-form-field appearance="outline">
+    <mat-label>Filter</mat-label>
+    <input
+      matInput
+      (keyup)="applyFilter($event)"
+      placeholder="........"
+      #input
+    />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Country</mat-label>
+    <mat-select
+      [(ngModel)]="countrySelected"
+      (ngModelChange)="onCountrySelected($event)"
+    >
+      <mat-option *ngFor="let country of listCountries" [value]="country.iso2">
+        {{ country.name }}
+      </mat-option>
+    </mat-select> </mat-form-field
+  ><mat-form-field appearance="fill">
+    <mat-label>State</mat-label>
+    <mat-select [(ngModel)]="selectedState" (ngModelChange)="onStateSelected()">
+      <mat-option *ngFor="let state of listState" [value]="state.iso2">
+        {{ state.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>City</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let city of listCity" [value]="city.id">
+        {{ city.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
 
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource" matSort>

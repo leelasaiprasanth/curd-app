@@ -13,6 +13,9 @@ import { MatSortModule } from '@angular/material/sort';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -20,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    FormsModule,
     MatTableModule,
     MatIconModule,
     MatButtonModule,
@@ -29,6 +33,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatSortModule,
     MatInputModule,
     MatFormFieldModule,
+    MatSelectModule,
+    ReactiveFormsModule,
     HttpClientModule,
   ],
   providers: [],
